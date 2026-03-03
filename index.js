@@ -9,15 +9,18 @@ const morgan=require('morgan');
 const cors=require('cors');
 const PORT=process.env.PORT;
 const routes=require('./routes/contact');
+const eventRoutes=require('./routes/event');
+const galleryRoutes=require('./routes/gallery');
 
 app.use(morgan('dev'));
 app.use(cors());
 app.use(express.json());
 app.use(routes);
-
-// app.get('/',(req,res)=>{
-//   res.send('Hello World');
-// })
+app.use(eventRoutes)
+app.use(galleryRoutes)
+app.get('/',(req,res)=>{
+  res.send('Hello World');
+})
 
 app.listen(PORT,()=>{
   console.log(`Server is running on port ${PORT}`);
