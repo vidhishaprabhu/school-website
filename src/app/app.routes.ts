@@ -11,6 +11,7 @@ import { PrivacyPolicy } from './pages/privacy-policy/privacy-policy';
 import { Disclaimer } from './pages/disclaimer/disclaimer';
 import { Dashboard } from './dashboard/dashboard';
 import { Login } from './login/login';
+import { Notices } from './features/notices/notices';
 
 export const routes: Routes = [
   {
@@ -23,7 +24,7 @@ export const routes: Routes = [
   },
   {
     path:'notices',
-    component:Notice
+    component:Notices
   },
   {
     path:'events',

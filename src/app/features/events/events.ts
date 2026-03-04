@@ -7,5 +7,8 @@ import { Component } from '@angular/core';
   styleUrl: './events.scss'
 })
 export class Events {
+  ngOnInit(){
+    window.scrollTo(0,0);
+  }
 
 }
