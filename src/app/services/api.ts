@@ -17,4 +17,7 @@ export class Api {
   getGallery(){
     return this.http.get(`${environment.apiUrl}/get-gallery`);
   }
+  getTeachers(){
+    return this.http.get(`${environment.apiUrl}/get-teacher`);
+  }
 }

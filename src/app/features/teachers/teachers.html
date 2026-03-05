@@ -3,167 +3,22 @@
 </div>
 <div class="container">
   <div class="row">
+    @for (teacher of teachers; track $index) {
     <div class="col-md-4 mb-4">
       <div class="card h-100">
-        <img
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyzTWQoCUbRNdiyorem5Qp1zYYhpliR9q0Bw&s"
-          class="card-img-top"
-          alt="Teacher 1"
-        />
+        @for (img of teacher.image.split(','); track $index) {
+          <img [src]="img.trim()" width="200" />
+          }
         <div class="card-body">
-          <h5 class="card-title"><strong>Name:</strong> John Doe</h5>
-          <p class="card-text"><strong>Subject:</strong> Mathematics</p>
-          <p class="card-text"><strong>Designation:</strong> Senior Teacher</p>
+          <h5 class="card-title"><strong>Name:</strong> {{teacher.name}}</h5>
+          <p class="card-text"><strong>Subject:</strong> {{teacher.subject}}</p>
+          <p class="card-text"><strong>Designation:</strong> {{teacher.designation}}</p>
           <p class="card-text">
-            <strong>Bio:</strong> Passionate about teaching and inspiring
-            students to excel in mathematics.
+            <strong>Bio:</strong> {{teacher.bio}}
           </p>
         </div>
       </div>
     </div>
-    <div class="col-md-4 mb-4">
-      <div class="card h-100">
-        <img
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyzTWQoCUbRNdiyorem5Qp1zYYhpliR9q0Bw&s"
-          class="card-img-top"
-          alt="Teacher 1"
-        />
-        <div class="card-body">
-          <h5 class="card-title"><strong>Name:</strong> John Doe</h5>
-          <p class="card-text"><strong>Subject:</strong> Mathematics</p>
-          <p class="card-text"><strong>Designation:</strong> Senior Teacher</p>
-          <p class="card-text">
-            <strong>Bio:</strong> Passionate about teaching and inspiring
-            students to excel in mathematics.
-          </p>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-4 mb-4">
-      <div class="card h-100">
-        <img
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyzTWQoCUbRNdiyorem5Qp1zYYhpliR9q0Bw&s"
-          class="card-img-top"
-          alt="Teacher 1"
-        />
-        <div class="card-body">
-          <h5 class="card-title"><strong>Name:</strong> John Doe</h5>
-          <p class="card-text"><strong>Subject:</strong> Mathematics</p>
-          <p class="card-text"><strong>Designation:</strong> Senior Teacher</p>
-          <p class="card-text">
-            <strong>Bio:</strong> Passionate about teaching and inspiring
-            students to excel in mathematics.
-          </p>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-4 mb-4">
-      <div class="card h-100">
-        <img
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyzTWQoCUbRNdiyorem5Qp1zYYhpliR9q0Bw&s"
-          class="card-img-top"
-          alt="Teacher 1"
-        />
-        <div class="card-body">
-          <h5 class="card-title"><strong>Name:</strong> John Doe</h5>
-          <p class="card-text"><strong>Subject:</strong> Mathematics</p>
-          <p class="card-text"><strong>Designation:</strong> Senior Teacher</p>
-          <p class="card-text">
-            <strong>Bio:</strong> Passionate about teaching and inspiring
-            students to excel in mathematics.
-          </p>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-4 mb-4">
-      <div class="card h-100">
-        <img
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyzTWQoCUbRNdiyorem5Qp1zYYhpliR9q0Bw&s"
-          class="card-img-top"
-          alt="Teacher 1"
-        />
-        <div class="card-body">
-          <h5 class="card-title"><strong>Name:</strong> John Doe</h5>
-          <p class="card-text"><strong>Subject:</strong> Mathematics</p>
-          <p class="card-text"><strong>Designation:</strong> Senior Teacher</p>
-          <p class="card-text">
-            <strong>Bio:</strong> Passionate about teaching and inspiring
-            students to excel in mathematics.
-          </p>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-4 mb-4">
-      <div class="card h-100">
-        <img
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyzTWQoCUbRNdiyorem5Qp1zYYhpliR9q0Bw&s"
-          class="card-img-top"
-          alt="Teacher 1"
-        />
-        <div class="card-body">
-          <h5 class="card-title"><strong>Name:</strong> John Doe</h5>
-          <p class="card-text"><strong>Subject:</strong> Mathematics</p>
-          <p class="card-text"><strong>Designation:</strong> Senior Teacher</p>
-          <p class="card-text">
-            <strong>Bio:</strong> Passionate about teaching and inspiring
-            students to excel in mathematics.
-          </p>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-4 mb-4">
-      <div class="card h-100">
-        <img
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyzTWQoCUbRNdiyorem5Qp1zYYhpliR9q0Bw&s"
-          class="card-img-top"
-          alt="Teacher 1"
-        />
-        <div class="card-body">
-          <h5 class="card-title"><strong>Name:</strong> John Doe</h5>
-          <p class="card-text"><strong>Subject:</strong> Mathematics</p>
-          <p class="card-text"><strong>Designation:</strong> Senior Teacher</p>
-          <p class="card-text">
-            <strong>Bio:</strong> Passionate about teaching and inspiring
-            students to excel in mathematics.
-          </p>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-4 mb-4">
-      <div class="card h-100">
-        <img
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyzTWQoCUbRNdiyorem5Qp1zYYhpliR9q0Bw&s"
-          class="card-img-top"
-          alt="Teacher 1"
-        />
-        <div class="card-body">
-          <h5 class="card-title"><strong>Name:</strong> John Doe</h5>
-          <p class="card-text"><strong>Subject:</strong> Mathematics</p>
-          <p class="card-text"><strong>Designation:</strong> Senior Teacher</p>
-          <p class="card-text">
-            <strong>Bio:</strong> Passionate about teaching and inspiring
-            students to excel in mathematics.
-          </p>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-4 mb-4">
-      <div class="card h-100">
-        <img
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyzTWQoCUbRNdiyorem5Qp1zYYhpliR9q0Bw&s"
-          class="card-img-top"
-          alt="Teacher 1"
-        />
-        <div class="card-body">
-          <h5 class="card-title"><strong>Name:</strong> John Doe</h5>
-          <p class="card-text"><strong>Subject:</strong> Mathematics</p>
-          <p class="card-text"><strong>Designation:</strong> Senior Teacher</p>
-          <p class="card-text">
-            <strong>Bio:</strong> Passionate about teaching and inspiring
-            students to excel in mathematics.
-          </p>
-        </div>
-      </div>
-    </div>
+  }
   </div>
 </div>
