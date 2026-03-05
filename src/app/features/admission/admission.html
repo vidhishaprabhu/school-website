@@ -1,8 +1,8 @@
 <section class="container my-5">
   <h2 class="text-center mb-4">Admission Form</h2>
-  <form class="my-4" id="admissionForm">
+  <form class="my-4" id="admissionForm" [formGroup]="admissionForm">
     <!-- Student Details -->
-    <div class="card mb-4">
+    <div class="card mb-4" formGroupName="studentDetails">
       <div class="card-header background">Student Details</div>
       <div class="card-body">
         <div class="row g-3">
@@ -11,6 +11,7 @@
 
             <span style="color: red">*</span>
             <input
+              formControlName="fullName"
               type="text"
               class="form-control"
               name="studentName"
@@ -21,7 +22,13 @@
           <div class="col-md-3">
             <label class="form-label">Date of Birth</label>
             <span style="color: red">*</span>
-            <input type="date" class="form-control" name="dob" required />
+            <input
+              formControlName="dob"
+              type="date"
+              class="form-control"
+              name="dob"
+              required
+            />
           </div>
           <div class="col-md-3">
             <label class="form-label">Gender</label>
@@ -29,6 +36,7 @@
             <div>
               <div class="form-check form-check-inline">
                 <input
+                  formControlName="gender"
                   class="form-check-input"
                   type="radio"
                   name="gender"
@@ -40,6 +48,7 @@
               </div>
               <div class="form-check form-check-inline">
                 <input
+                  formControlName="gender"
                   class="form-check-input"
                   type="radio"
                   name="gender"
@@ -50,6 +59,7 @@
               </div>
               <div class="form-check form-check-inline">
                 <input
+                  formControlName="gender"
                   class="form-check-input"
                   type="radio"
                   name="gender"
@@ -64,6 +74,7 @@
             <label class="form-label">Age</label>
             <span style="color: red">*</span>
             <input
+              formControlName="age"
               type="number"
               class="form-control"
               name="age"
@@ -76,6 +87,7 @@
           <div class="col-md-2">
             <label class="form-label">Blood Group</label>
             <input
+              formControlName="bloodGroup"
               type="text"
               class="form-control"
               name="bloodGroup"
@@ -86,6 +98,7 @@
             <label class="form-label">Religion</label>
             <span style="color: red">*</span>
             <input
+              formControlName="religion"
               type="text"
               class="form-control"
               name="religion"
@@ -95,7 +108,11 @@
           <div class="col-md-3">
             <label class="form-label">Caste Category</label>
             <span style="color: red">*</span>
-            <select class="form-select" name="casteCategory">
+            <select
+              formControlName="casteCategory"
+              class="form-select"
+              name="casteCategory"
+            >
               <option selected disabled>Select</option>
               <option>General</option>
               <option>SC</option>
@@ -108,6 +125,7 @@
             <label class="form-label">Nationality</label>
             <span style="color: red">*</span>
             <input
+              formControlName="nationality"
               type="text"
               class="form-control"
               name="nationality"
@@ -118,6 +136,7 @@
             <label class="form-label">Mother Tongue</label>
             <span style="color: red">*</span>
             <input
+              formControlName="motherTongue"
               type="text"
               class="form-control"
               name="motherTongue"
@@ -128,6 +147,7 @@
             <label class="form-label">Aadhaar Number</label>
             <span style="color: red">*</span>
             <input
+              formControlName="aadharNumber"
               type="text"
               class="form-control"
               name="aadhaar"
@@ -139,14 +159,18 @@
     </div>
 
     <!-- Admission Details -->
-    <div class="card mb-4">
+    <div class="card mb-4" formGroupName="admissionDetails">
       <div class="card-header background">Admission Details</div>
       <div class="card-body">
         <div class="row g-3">
           <div class="col-md-4">
             <label class="form-label">Admission For Class</label>
             <span style="color: red">*</span>
-            <select class="form-select" name="admissionClass">
+            <select
+              class="form-select"
+              name="admissionClass"
+              formControlName="admissionForClass"
+            >
               <option selected disabled>Select Class</option>
               <option>Nursery</option>
               <option>LKG</option>
@@ -161,7 +185,9 @@
           </div>
           <div class="col-md-4">
             <label class="form-label">Academic Year</label>
+            <span style="color: red">*</span>
             <input
+              formControlName="academicYear"
               type="text"
               class="form-control"
               name="academicYear"
@@ -171,6 +197,7 @@
           <div class="col-md-4">
             <label class="form-label">Previous School Name</label>
             <input
+              formControlName="previousSchoolName"
               type="text"
               class="form-control"
               name="prevSchool"
@@ -180,6 +207,7 @@
           <div class="col-12">
             <label class="form-label">Reason for Leaving Previous School</label>
             <textarea
+              formControlName="reasonForLeavingPreviousSchool"
               class="form-control"
               name="reasonLeaving"
               rows="2"
@@ -194,14 +222,16 @@
     <div class="card mb-4">
       <div class="card-header background">Parent/Guardian Details</div>
       <div class="card-body">
-        <div class="row g-3">
+        <div class="row g-3" formGroupName="father">
           <!-- Father's Info -->
           <div class="col-12">
             <h6>Father's Information</h6>
           </div>
           <div class="col-md-4">
             <label class="form-label">Full Name</label>
+            <span style="color: red">*</span>
             <input
+              formControlName="fullName"
               type="text"
               class="form-control"
               name="fatherName"
@@ -210,7 +240,9 @@
           </div>
           <div class="col-md-2">
             <label class="form-label">Qualification</label>
+            <span style="color: red">*</span>
             <input
+              formControlName="qualification"
               type="text"
               class="form-control"
               name="fatherQualification"
@@ -219,7 +251,9 @@
           </div>
           <div class="col-md-2">
             <label class="form-label">Occupation</label>
+            <span style="color: red">*</span>
             <input
+              formControlName="occupation"
               type="text"
               class="form-control"
               name="fatherOccupation"
@@ -229,6 +263,7 @@
           <div class="col-md-4">
             <label class="form-label">Office Address</label>
             <input
+              formControlName="officeAddress"
               type="text"
               class="form-control"
               name="fatherOffice"
@@ -237,7 +272,9 @@
           </div>
           <div class="col-md-3">
             <label class="form-label">Contact Number</label>
+            <span style="color: red">*</span>
             <input
+              formControlName="contactNumber"
               type="text"
               class="form-control"
               name="fatherContact"
@@ -247,6 +284,7 @@
           <div class="col-md-3">
             <label class="form-label">Email</label>
             <input
+              formControlName="email"
               type="email"
               class="form-control"
               name="fatherEmail"
@@ -255,20 +293,26 @@
           </div>
           <div class="col-md-3">
             <label class="form-label">Aadhaar Number</label>
+            <span style="color: red">*</span>
             <input
+              formControlName="aadharNumber"
               type="text"
               class="form-control"
               name="fatherAadhaar"
               placeholder="Aadhaar number"
             />
           </div>
-          <!-- Mother's Info -->
+        </div>
+        <!-- Mother's Info -->
+        <div class="row g-3 mt-4" formGroupName="mother">
           <div class="col-12 mt-3">
             <h6>Mother's Information</h6>
           </div>
           <div class="col-md-4">
             <label class="form-label">Full Name</label>
+            <span style="color: red">*</span>
             <input
+              formControlName="fullName"
               type="text"
               class="form-control"
               name="motherName"
@@ -277,7 +321,9 @@
           </div>
           <div class="col-md-2">
             <label class="form-label">Qualification</label>
+            <span style="color: red">*</span>
             <input
+              formControlName="qualification"
               type="text"
               class="form-control"
               name="motherQualification"
@@ -286,7 +332,9 @@
           </div>
           <div class="col-md-2">
             <label class="form-label">Occupation</label>
+            <span style="color: red">*</span>
             <input
+              formControlName="occupation"
               type="text"
               class="form-control"
               name="motherOccupation"
@@ -296,6 +344,7 @@
           <div class="col-md-4">
             <label class="form-label">Office Address</label>
             <input
+              formControlName="officeAddress"
               type="text"
               class="form-control"
               name="motherOffice"
@@ -304,7 +353,9 @@
           </div>
           <div class="col-md-3">
             <label class="form-label">Contact Number</label>
+            <span style="color: red">*</span>
             <input
+              formControlName="contactNumber"
               type="text"
               class="form-control"
               name="motherContact"
@@ -314,6 +365,7 @@
           <div class="col-md-3">
             <label class="form-label">Email</label>
             <input
+              formControlName="email"
               type="email"
               class="form-control"
               name="motherEmail"
@@ -322,20 +374,27 @@
           </div>
           <div class="col-md-3">
             <label class="form-label">Aadhaar Number</label>
+            <span style="color: red">*</span>
             <input
+              formControlName="aadharNumber"
               type="text"
               class="form-control"
               name="motherAadhaar"
               placeholder="Aadhaar number"
             />
           </div>
+        </div>
+        <div>
           <!-- Guardian Info (optional) -->
+        </div>
+        <div class="row g-3 mt-4" formGroupName="guardianInfo">
           <div class="col-12 mt-3">
             <h6>Guardian Information (Optional)</h6>
           </div>
           <div class="col-md-4">
             <label class="form-label">Full Name</label>
             <input
+              formControlName="fullName"
               type="text"
               class="form-control"
               name="guardianName"
@@ -345,6 +404,7 @@
           <div class="col-md-2">
             <label class="form-label">Relationship</label>
             <input
+              formControlName="relationship"
               type="text"
               class="form-control"
               name="guardianRelation"
@@ -354,6 +414,7 @@
           <div class="col-md-3">
             <label class="form-label">Contact Number</label>
             <input
+              formControlName="contactNumber"
               type="text"
               class="form-control"
               name="guardianContact"
@@ -363,6 +424,7 @@
           <div class="col-md-3">
             <label class="form-label">Address</label>
             <input
+              formControlName="address"
               type="text"
               class="form-control"
               name="guardianAddress"
@@ -374,13 +436,15 @@
     </div>
 
     <!-- Address Details -->
-    <div class="card mb-4">
+    <div class="card mb-4" formGroupName="addressDetails">
       <div class="card-header background">Address Details</div>
       <div class="card-body">
         <div class="row g-3">
           <div class="col-md-6">
             <label class="form-label">Present Address</label>
+            <span style="color: red">*</span>
             <textarea
+              formControlName="presentAddress"
               class="form-control"
               name="presentAddress"
               rows="2"
@@ -389,7 +453,9 @@
           </div>
           <div class="col-md-6">
             <label class="form-label">Permanent Address</label>
+            <span style="color: red">*</span>
             <textarea
+              formControlName="permanentAddress"
               class="form-control"
               name="permanentAddress"
               rows="2"
@@ -400,6 +466,7 @@
                 class="form-check-input"
                 type="checkbox"
                 id="sameAddress"
+                (change)="copyAddress($event)"
               />
               <label class="form-check-label" for="sameAddress">
                 Same as Present Address
@@ -408,7 +475,9 @@
           </div>
           <div class="col-md-4">
             <label class="form-label">Emergency Contact Number</label>
+            <span style="color: red">*</span>
             <input
+              formControlName="emergencyContactNumber"
               type="text"
               class="form-control"
               name="emergencyContact"
@@ -417,7 +486,9 @@
           </div>
           <div class="col-md-4">
             <label class="form-label">Alternative Contact Number</label>
+            <span style="color: red">*</span>
             <input
+              formControlName="alternativeContactNumber"
               type="text"
               class="form-control"
               name="altContact"
@@ -429,19 +500,23 @@
     </div>
 
     <!-- Documents Upload -->
-    <div class="card mb-4">
+    <div class="card mb-4" formGroupName="documents">
       <div class="card-header background">Documents Upload</div>
       <div class="card-body">
         <div class="mb-3">
           <label class="form-label"
             >Student Photo <span class="text-danger">*</span></label
           >
+
           <input
+            formControlName="studentPhoto"
             class="form-control"
             type="file"
             name="studentPhoto"
+            (change)="onImageSelect($event)"
             accept="image/*"
             required
+
           />
         </div>
       </div>
@@ -450,9 +525,10 @@
     <!-- Declaration -->
     <div class="card mb-4">
       <div class="card-header background">Declaration</div>
-      <div class="card-body">
+      <div class="card-body" formGroupName="declaration">
         <div class="form-check mb-3">
           <input
+            formControlName="agree"
             class="form-check-input"
             type="checkbox"
             id="declaration"
@@ -466,6 +542,7 @@
           <div class="col-md-3">
             <label class="form-label">Date</label>
             <input
+              formControlName="declarationDate"
               type="date"
               class="form-control"
               name="declarationDate"
@@ -475,8 +552,10 @@
           <div class="col-md-9 text-end">
             <button
               type="button"
+              [disabled]="admissionForm.invalid"
               class="btn btn-primary background px-4"
               id="generatePdfBtn"
+              (click)="generatePDF()"
             >
               Generate PDF
             </button>
@@ -528,5 +607,334 @@
         </ul>
       </div>
     </div>
+  </div>
+  <div id="pdf" width="600px" class="mb-5 p-3">
+    <section
+      style="border: 4px dotted #0b1d51; border-radius: 10px; padding: 10px"
+    >
+      <div class="row" style="border-bottom: 20px solid #0b1d51">
+        <div class="col-2">
+          <img
+            src="assets/images/logo.jpeg"
+            class="rounded-circle"
+            width="95"
+            height="95"
+            alt=""
+          />
+        </div>
+        <div class="col-8 text-center">
+          <h1 class="fw-bold text m-0 p-0" style="font-size: 35px">
+            GOD GRACE SCHOOL
+          </h1>
+          <p class="m-0 p-0 fw-bold">
+            SALEMPUR DERVA, SALEMPUR, GOPALGANJ, BIHAR -841405
+          </p>
+          <p>
+            <span class="text-danger fw-bold">Mobile:</span> +91 8976543678, +91
+            8989543678
+            <span class="text-danger fw-bold">Email:</span>
+            godgraceschool&#64;gmail.com
+          </p>
+        </div>
+        <div class="col-2"></div>
+      </div>
+      <p class="text-decoration-underline fs-2 fw-bold text text-center">
+        -:ADMISSION FORM:-
+      </p>
+      <div class="row border border-dark m-1">
+        <div class="col-5">
+          <table width="100%">
+            <thead>
+              <tr>
+                <th width="40%">Student's Name:</th>
+                <th width="60%">
+                  {{admissionForm.get("studentDetails.fullName")?.value}}
+                </th>
+              </tr>
+              <tr>
+                <th width="40%">Date of Birth:</th>
+                <th width="60%">
+                  {{admissionForm.get("studentDetails.dob")?.value}}
+                </th>
+              </tr>
+              <tr>
+                <th width="40%">Gender:</th>
+                <th width="60%">
+                  {{admissionForm.get("studentDetails.gender")?.value}}
+                </th>
+              </tr>
+              <tr>
+                <th width="40%">Age:</th>
+                <th width="60%">
+                  {{admissionForm.get("studentDetails.age")?.value}}
+                </th>
+              </tr>
+              <tr>
+                <th width="40%">Blood Group:</th>
+                <th width="60%">
+                  {{admissionForm.get("studentDetails.bloodGroup")?.value}}
+                </th>
+              </tr>
+              <tr>
+                <th width="40%">Religion:</th>
+                <th width="60%">
+                  {{admissionForm.get("studentDetails.religion")?.value}}
+                </th>
+              </tr>
+              <tr>
+                <th width="40%">Caste Category:</th>
+                <th width="60%">
+                  {{admissionForm.get("studentDetails.casteCategory")?.value}}
+                </th>
+              </tr>
+              <tr>
+                <th width="40%">Nationality:</th>
+                <th width="60%">
+                  {{admissionForm.get("studentDetails.nationality")?.value}}
+                </th>
+              </tr>
+            </thead>
+          </table>
+        </div>
+        <div class="col-5">
+          <table width="100%">
+            <thead>
+              <tr>
+                <th width="40%">Mother Tongue:</th>
+                <th width="60%">
+                  {{admissionForm.get("studentDetails.motherTongue")?.value}}
+                </th>
+              </tr>
+              <tr>
+                <th width="40%">Aadhaar No:</th>
+                <th width="60%">
+                  {{admissionForm.get("studentDetails.aadharNumber")?.value}}
+                </th>
+              </tr>
+            </thead>
+          </table>
+        </div>
+        <div class="col-2 border border-dark">
+          <img
+            [src]="admissionForm.get('documents.studentPhoto')?.value"
+            alt=""
+            width="100%"
+            height="100%"
+          />
+        </div>
+      </div>
+      <div class="row border border-dark m-1">
+        <div class="col-5">
+          <table width="100%">
+            <thead>
+              <tr>
+                <th width="40%">Admission Class:</th>
+                <th width="60%">{{admissionForm.get("admissionDetails.admissionForClass")?.value}}</th>
+              </tr>
+              <tr>
+                <th width="40%">Academic Year:</th>
+                <th width="60%">{{admissionForm.get("admissionDetails.academicYear")?.value}}</th>
+              </tr>
+            </thead>
+          </table>
+        </div>
+        <div class="col-7">
+          <table width="100%">
+            <thead>
+              <tr>
+                <th width="30%">Previous School:</th>
+                <th width="70%">{{admissionForm.get("admissionDetails.previousSchoolName")?.value}}</th>
+              </tr>
+              <tr>
+                <th width="30%">Reason of Leaving:</th>
+                <th width="70%">
+                  {{admissionForm.get("admissionDetails.reasonForLeavingPreviousSchool")?.value}}
+                </th>
+              </tr>
+            </thead>
+          </table>
+        </div>
+      </div>
+      <div class="row border border-dark m-1">
+        <div class="col-5">
+          <table width="100%">
+            <thead>
+              <tr>
+                <th width="40%">Father's Name:</th>
+                <th width="60%">{{admissionForm.get("father.fullName")?.value}}</th>
+              </tr>
+              <tr>
+                <th width="40%">Qualification:</th>
+                <th width="60%">{{admissionForm.get("father.qualification")?.value}}</th>
+              </tr>
+              <tr>
+                <th width="40%">Contact No:</th>
+                <th width="60%">{{admissionForm.get("father.contactNumber")?.value}}</th>
+              </tr>
+              <tr>
+                <th width="40%">Aadhaar No:</th>
+                <th width="60%">{{admissionForm.get("father.aadharNumber")?.value}}</th>
+              </tr>
+            </thead>
+          </table>
+        </div>
+        <div class="col-7">
+          <table width="100%">
+            <thead>
+              <tr>
+                <th width="30%">Occupation:</th>
+                <th width="70%">{{admissionForm.get("father.occupation")?.value}}</th>
+              </tr>
+              <tr>
+                <th width="30%">Office:</th>
+                <th width="70%">{{admissionForm.get("father.officeAddress")?.value}}</th>
+              </tr>
+              <tr>
+                <th width="30%">Email:</th>
+                <th width="70%">{{admissionForm.get("father.email")?.value}}</th>
+              </tr>
+            </thead>
+          </table>
+        </div>
+      </div>
+      <div class="row border border-dark m-1">
+        <div class="col-5">
+          <table width="100%">
+            <thead>
+              <tr>
+                <th width="40%">Mother's Name:</th>
+                <th width="60%">{{admissionForm.get("mother.fullName")?.value}}</th>
+              </tr>
+              <tr>
+                <th width="40%">Qualification:</th>
+                <th width="60%">{{admissionForm.get("mother.qualification")?.value}}</th>
+              </tr>
+              <tr>
+                <th width="40%">Contact No:</th>
+                <th width="60%">{{admissionForm.get("mother.contactNumber")?.value}}</th>
+              </tr>
+              <tr>
+                <th width="40%">Aadhaar No:</th>
+                <th width="60%">{{admissionForm.get("mother.aadharNumber")?.value}}</th>
+              </tr>
+            </thead>
+          </table>
+        </div>
+        <div class="col-7">
+          <table width="100%">
+            <thead>
+              <tr>
+                <th width="30%">Occupation:</th>
+                <th width="70%">{{admissionForm.get("mother.occupation")?.value}}</th>
+              </tr>
+              <tr>
+                <th width="30%">Office:</th>
+                <th width="70%">{{admissionForm.get("mother.officeAddress")?.value}}</th>
+              </tr>
+              <tr>
+                <th width="30%">Email:</th>
+                <th width="70%">{{admissionForm.get("mother.email")?.value}}</th>
+              </tr>
+            </thead>
+          </table>
+        </div>
+      </div>
+      <div class="row border border-dark m-1">
+        <div class="col-5">
+          <table width="100%">
+            <thead>
+              <tr>
+                <th width="40%">Guardian Name:</th>
+                <th width="60%">{{admissionForm.get("guardianInfo.fullName")?.value}}</th>
+              </tr>
+              <tr>
+                <th width="40%">Relation:</th>
+                <th width="60%">{{admissionForm.get("guardianInfo.relationship")?.value}}</th>
+              </tr>
+            </thead>
+          </table>
+        </div>
+        <div class="col-7">
+          <table width="100%">
+            <thead>
+              <tr>
+                <th width="30%">Contact No:</th>
+                <th width="70%">{{admissionForm.get("guardianInfo.contactNumber")?.value}}</th>
+              </tr>
+              <tr>
+                <th width="30%">Address:</th>
+                <th width="70%">{{admissionForm.get("guardianInfo.address")?.value}}</th>
+              </tr>
+            </thead>
+          </table>
+        </div>
+      </div>
+      <div class="row border border-dark m-1">
+        <div class="col-5">
+          <table width="100%">
+            <thead>
+              <tr>
+                <th width="40%">Emergency Contact:</th>
+                <th width="60%">{{admissionForm.get("addressDetails.emergencyContactNumber")?.value}}</th>
+              </tr>
+              <tr>
+                <th width="40%">Alternative Contact:</th>
+                <th width="60%">{{admissionForm.get("addressDetails.alternativeContactNumber")?.value}}</th>
+              </tr>
+            </thead>
+          </table>
+        </div>
+        <div class="col-7">
+          <table width="100%">
+            <thead>
+              <tr>
+                <th width="30%">Present Address:</th>
+                <th width="70%">{{admissionForm.get("addressDetails.presentAddress")?.value}}</th>
+              </tr>
+              <tr>
+                <th width="30%">Permanent Address:</th>
+                <th width="70%">{{admissionForm.get("addressDetails.permanentAddress")?.value}}</th>
+              </tr>
+            </thead>
+          </table>
+        </div>
+      </div>
+      <div class="row border border-dark m-1">
+        <h6 class="background py-1 fs-4 mb-3">Instructions for Submission:-</h6>
+        <div class="mx-1">
+          <p class="mb-2 fw-bold">
+            Attach the following documents with this form:
+          </p>
+          <ul class="mb-3">
+            <li>Birth Certificate (photocopy)</li>
+            <li>Aadhaar Card (child and parents)</li>
+            <li>Transfer Certificate (if applicable)</li>
+            <li>Recent passport-size photograph of the student</li>
+            <li>Caste Certificate (if applicable)</li>
+            <li>Medical Fitness Certificate (if required)</li>
+            <li>Address Proof (utility bill, ration card, etc.)</li>
+          </ul>
+
+          <ul class="mb-0">
+            <li>
+              Both parents or guardians must sign the declaration section before
+              submission.
+            </li>
+            <li>
+              The form must be submitted in person at the school office along
+              with required documents.
+            </li>
+            <li>
+              <strong>Note:</strong> Submission of this form does not guarantee
+              admission. Final decision rests with school authorities.
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="row" style="height: 350px">
+        <div class="col-6">Parent Signature:-</div>
+        <div class="col-6">Principal Signature:-</div>
+      </div>
+    </section>
   </div>
 </section>
