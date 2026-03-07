@@ -3,9 +3,9 @@ const Gallery=require('../models/Gallery.Model');
 exports.createGallery=async(req,res)=>{
   try{
     const {title,imageUrl,date}=req.body;
-    if(!title || !imageUrl || !date){
-      return res.status(400).json({message:'All fields are required'})
-    }
+    // if(!title || !imageUrl || !date){
+    //   return res.status(400).json({message:'All fields are required'})
+    // }
     const gallery=await Gallery.create({
       title,
       imageUrl,

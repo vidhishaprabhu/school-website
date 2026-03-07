@@ -13,6 +13,7 @@ const eventRoutes=require('./routes/event');
 const galleryRoutes=require('./routes/gallery');
 const noticeRoutes=require('./routes/notice');
 const teacherRoutes=require('./routes/teacher');
+const authRoutes=require('./routes/auth');
 
 app.use(morgan('dev'));
 app.use(cors());
@@ -22,6 +23,7 @@ app.use(eventRoutes)
 app.use(galleryRoutes)
 app.use(noticeRoutes)
 app.use(teacherRoutes)
+app.use(authRoutes)
 
 app.get('/',(req,res)=>{
   res.send('Hello World');
