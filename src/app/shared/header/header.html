@@ -68,6 +68,12 @@
             </li>
             <li><a class="dropdown-item background" routerLink="/disclaimer">Disclaimer</a></li>
             <li><a class="dropdown-item background" routerLink="/dashboard">Dashboard</a></li>
+            @if(isLoggedIn()){
+  <li>
+    <a class="dropdown-item background" (click)="logout()">Logout</a>
+  </li>
+}
+
             <!-- Add more links as needed -->
           </ul>
         </li>

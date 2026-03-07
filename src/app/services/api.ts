@@ -20,4 +20,7 @@ export class Api {
   getTeachers(){
     return this.http.get(`${environment.apiUrl}/get-teacher`);
   }
+  submitForm(formData:any){
+    return this.http.post(`${environment.apiUrl}/contact`,formData);
+  }
 }

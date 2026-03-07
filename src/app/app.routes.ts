@@ -12,6 +12,7 @@ import { Disclaimer } from './pages/disclaimer/disclaimer';
 import { Dashboard } from './dashboard/dashboard';
 import { Login } from './login/login';
 import { Notices } from './features/notices/notices';
+import { authGuard } from './guard/auth-guard';
 
 export const routes: Routes = [
   {
@@ -56,7 +57,8 @@ export const routes: Routes = [
   },
   {
     path:'dashboard',
-    component:Dashboard
+    component:Dashboard,
+    canActivate:[authGuard]
   },
   {
     path:'login',
