@@ -23,4 +23,7 @@ export class Api {
   submitForm(formData:any){
     return this.http.post(`${environment.apiUrl}/contact`,formData);
   }
+  getContacts(){
+    return this.http.get(`${environment.apiUrl}/get-contacts`)
+  }
 }
