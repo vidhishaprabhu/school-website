@@ -4,6 +4,7 @@
     class="btn bg-primary btn-sm background text-white"
     data-bs-toggle="modal"
     data-bs-target="#myModal"
+    (click)="isEdit===false;selectedTeacher.reset()"
   >
     <i class="fa fa-plus"></i> Add Teacher
   </a>
@@ -11,6 +12,7 @@
 <table class="table">
   <thead class="table-dark">
     <tr>
+      <th class="background">Sl No</th>
       <th class="background">Teacher Name</th>
       <th class="background">Subject</th>
       <th class="background">Designation</th>
@@ -19,20 +21,26 @@
     </tr>
   </thead>
   <tbody>
+    @for (teacher of teachers; track $index) {
     <tr>
-      <td>John Doe</td>
-      <td>Mathematics</td>
-      <td>Senior Teacher</td>
-      <td><img src="profile1.jpg" alt="John Doe" class="img-thumbnail" /></td>
+      <td>{{$index+1}}</td>
+      <td>{{teacher.name}}</td>
+      <td>{{teacher.subject}}</td>
+      <td>{{teacher.designation}}</td>
+      <td>@for (img of teacher.image.split(','); track $index) {
+          <img [src]="img.trim()" width="30" height="30" />
+          }</td>
       <td class="text-end">
         <i
           class="fa fa-pencil me-4"
           data-bs-toggle="modal"
           data-bs-target="#myModal"
+          (click)="editTeachers(teacher)"
         ></i>
-        <i class="fa fa-trash text-danger"></i>
+        <i class="fa fa-trash text-danger" (click)="deleteTeacher(teacher)"></i>
       </td>
     </tr>
+  }
   </tbody>
 </table>
 
@@ -52,7 +60,7 @@
 
       <!-- Modal body -->
       <div class="modal-body">
-        <form>
+        <form [formGroup]="selectedTeacher">
           <div class="row">
             <!-- Part 1: Event Details -->
             <div class="col-md-6">
@@ -60,6 +68,7 @@
                 <label for="teacherName" class="form-label">Teacher Name</label>
                 <input
                   type="text"
+                  formControlName="name"
                   class="form-control"
                   id="teacherName"
                   placeholder="Enter teacher name"
@@ -69,6 +78,7 @@
                 <label for="subject" class="form-label">Subject</label>
                 <input
                   type="text"
+                  formControlName="subject"
                   class="form-control"
                   id="subject"
                   placeholder="Enter subject"
@@ -78,6 +88,7 @@
                 <label for="designation" class="form-label">Designation</label>
                 <input
                   type="text"
+                  formControlName="designation"
                   class="form-control"
                   id="designation"
                   placeholder="Enter designation"
@@ -89,6 +100,7 @@
                 >
                 <input
                   type="text"
+                  formControlName="image"
                   class="form-control"
                   id="profilePicture"
                   placeholder="Enter profile picture URL"
@@ -101,6 +113,7 @@
                 <label for="bio" class="form-label">Bio</label>
                 <textarea
                   class="form-control flex-grow-1"
+                  formControlName="bio"
                   id="bio"
                   rows="8"
                   placeholder="Enter bio"
@@ -115,6 +128,8 @@
             type="button"
             class="btn btn-danger background btn-sm"
             data-bs-dismiss="modal"
+            [disabled]="selectedTeacher.invalid"
+            (click)="onSubmit()"
           >
             Submit
           </button>
