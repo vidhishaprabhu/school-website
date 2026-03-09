@@ -4,6 +4,7 @@
     class="btn bg-primary btn-sm background text-white"
     data-bs-toggle="modal"
     data-bs-target="#myModal"
+    (click)="isEdit===false;selectedNotice.reset()"
   >
     <i class="fa fa-plus"></i> Add Notice
   </a>
@@ -11,26 +12,33 @@
 <table class="table">
   <thead class="table-dark">
     <tr>
+      <th class="background">Sl No</th>
       <th class="background">Notice Title</th>
       <th class="background">Category</th>
+      <th class="background">Description</th>
       <th class="background">Published Date</th>
       <th class="text-end background">Actions</th>
     </tr>
   </thead>
   <tbody>
+    @for (notice of notices; track $index) {
     <tr>
-      <td>Event 1</td>
-      <td>Category 1</td>
-      <td>2023-09-15</td>
+      <td>{{$index+1}}</td>
+      <td>{{notice.title}}</td>
+      <td>{{notice.category}}</td>
+      <td>{{notice.description}}</td>
+      <td>{{notice.date|date}}</td>
       <td class="text-end">
         <i
           class="fa fa-pencil me-4"
           data-bs-toggle="modal"
           data-bs-target="#myModal"
+          (click)="editNotice(notice)"
         ></i>
-        <i class="fa fa-trash text-danger"></i>
+        <i class="fa fa-trash text-danger" (click)="deleteNotice(notice)"></i>
       </td>
     </tr>
+  }
   </tbody>
 </table>
 
@@ -50,7 +58,7 @@
 
       <!-- Modal body -->
       <div class="modal-body">
-        <form>
+        <form [formGroup]="selectedNotice">
           <div class="row">
             <!-- Part 1: Event Details -->
             <div class="col-md-6">
@@ -58,6 +66,7 @@
                 <label for="eventTitle" class="form-label">Notice Title</label>
                 <input
                   type="text"
+                  formControlName="title"
                   class="form-control"
                   id="eventTitle"
                   placeholder="Enter notice title"
@@ -67,9 +76,20 @@
                 <label for="category" class="form-label">Category</label>
                 <input
                   type="text"
+                  formControlName="category"
                   class="form-control"
                   id="category"
                   placeholder="Enter notice category"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="date" class="form-label">Published Date</label>
+                <input
+                  type="date"
+                  formControlName="date"
+                  class="form-control"
+                  id="date"
+                  placeholder="Enter published date"
                 />
               </div>
             </div>
@@ -81,6 +101,7 @@
                 >
                 <textarea
                   class="form-control flex-grow-1"
+                  formControlName="description"
                   id="noticeDescription"
                   rows="8"
                   placeholder="Enter notice description"
@@ -95,6 +116,8 @@
             type="button"
             class="btn btn-danger background btn-sm"
             data-bs-dismiss="modal"
+            [disabled]="selectedNotice.invalid"
+            (click)="onSubmit()"
           >
             Submit
           </button>

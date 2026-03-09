@@ -29,6 +29,9 @@ export class Api {
   addEvent(formData:any){
     return this.http.post(`${environment.apiUrl}/event`,formData);
   }
+  addNotice(formData:any){
+    return this.http.post(`${environment.apiUrl}/notice`,formData);
+  }
   getContacts(){
     return this.http.get(`${environment.apiUrl}/get-contacts`)
   }
@@ -41,10 +44,16 @@ export class Api {
   deleteEvent(id:string){
     return this.http.delete(`${environment.apiUrl}/delete-event/${id}`)
   }
+  deleteNotice(id:string){
+    return this.http.delete(`${environment.apiUrl}/delete-notice/${id}`)
+  }
   updateGallery(id:string,formData:any){
     return this.http.put(`${environment.apiUrl}/update-gallery/${id}`,formData);
   }
   updateEvent(id:string,formData:any){
     return this.http.put(`${environment.apiUrl}/update-event/${id}`,formData);
+  }
+  updateNotice(id:string,formData:any){
+    return this.http.put(`${environment.apiUrl}/update-notice/${id}`,formData);
   }
 }
