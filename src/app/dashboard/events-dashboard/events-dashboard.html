@@ -4,6 +4,7 @@
     class="btn bg-primary btn-sm background text-white"
     data-bs-toggle="modal"
     data-bs-target="#myModal"
+    (click)="isEdit===false; selectedEvent.reset()"
   >
     <i class="fa fa-plus"></i> Add Event
   </a>
@@ -16,25 +17,30 @@
       <th class="background">Event Time</th>
       <th class="background">Location</th>
       <th class="background">Published Date</th>
+      <th class="background">Published Time</th>
       <th class="text-end background">Actions</th>
     </tr>
   </thead>
   <tbody>
+    @for (event of events; track $index) {
     <tr>
-      <td>Event 1</td>
-      <td>2023-10-01</td>
-      <td>10:00 AM</td>
-      <td>Auditorium</td>
-      <td>2023-09-15</td>
+      <td>{{event.title}}</td>
+      <td>{{event.date | date}}</td>
+      <td>{{event.date | date:'HH:mm'}}</td>
+      <td>{{event.location}}</td>
+      <td>{{event.createdAt|date}}</td>
+      <td>{{event.createdAt | date:'HH:mm'}}</td>
       <td class="text-end">
         <i
           class="fa fa-pencil me-4"
           data-bs-toggle="modal"
           data-bs-target="#myModal"
+          (click)="editEvent(event)"
         ></i>
-        <i class="fa fa-trash text-danger"></i>
+        <i class="fa fa-trash text-danger" (click)="deleteEvent(event)"></i>
       </td>
     </tr>
+    }
   </tbody>
 </table>
 
@@ -54,7 +60,7 @@
 
       <!-- Modal body -->
       <div class="modal-body">
-        <form>
+        <form [formGroup]="selectedEvent">
           <div class="row">
             <!-- Part 1: Event Details -->
             <div class="col-md-6">
@@ -62,6 +68,7 @@
                 <label for="eventTitle" class="form-label">Event Title</label>
                 <input
                   type="text"
+                  formControlName="title"
                   class="form-control"
                   id="eventTitle"
                   placeholder="Enter event title"
@@ -69,16 +76,17 @@
               </div>
               <div class="mb-3">
                 <label for="eventDate" class="form-label">Event Date</label>
-                <input type="date" class="form-control" id="eventDate" />
+                <input type="date" formControlName="date" class="form-control" id="eventDate" />
               </div>
               <div class="mb-3">
                 <label for="eventTime" class="form-label">Event Time</label>
-                <input type="time" class="form-control" id="eventTime" />
+                <input type="time" formControlName="eventTime" class="form-control" id="eventTime" />
               </div>
               <div class="mb-3">
                 <label for="location" class="form-label">Location</label>
                 <input
                   type="text"
+                  formControlName="location"
                   class="form-control"
                   id="location"
                   placeholder="Enter event location"
@@ -93,9 +101,24 @@
                 >
                 <textarea
                   class="form-control flex-grow-1"
+                  formControlName="description"
                   id="eventDescription"
                   rows="8"
                   placeholder="Enter event description"
+                ></textarea>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="mb-3 h-100 d-flex flex-column">
+                <label for="eventShortDescription" class="form-label"
+                  >Event Short Description</label
+                >
+                <textarea
+                  class="form-control flex-grow-1"
+                  formControlName="shortDescription"
+                  id="eventShortDescription"
+                  rows="8"
+                  placeholder="Enter event short description"
                 ></textarea>
               </div>
             </div>
@@ -105,8 +128,10 @@
         <div class="modal-footer">
           <button
             type="button"
+            [disabled]="selectedEvent.invalid"
             class="btn btn-danger background btn-sm"
             data-bs-dismiss="modal"
+            (click)="onSubmit()"
           >
             Submit
           </button>

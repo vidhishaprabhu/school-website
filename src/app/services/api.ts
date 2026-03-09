@@ -26,6 +26,9 @@ export class Api {
   addGallery(formData:any){
     return this.http.post(`${environment.apiUrl}/gallery`,formData);
   }
+  addEvent(formData:any){
+    return this.http.post(`${environment.apiUrl}/event`,formData);
+  }
   getContacts(){
     return this.http.get(`${environment.apiUrl}/get-contacts`)
   }
@@ -35,7 +38,13 @@ export class Api {
   deleteGallery(id:string){
     return this.http.delete(`${environment.apiUrl}/delete-gallery/${id}`)
   }
+  deleteEvent(id:string){
+    return this.http.delete(`${environment.apiUrl}/delete-event/${id}`)
+  }
   updateGallery(id:string,formData:any){
     return this.http.put(`${environment.apiUrl}/update-gallery/${id}`,formData);
+  }
+  updateEvent(id:string,formData:any){
+    return this.http.put(`${environment.apiUrl}/update-event/${id}`,formData);
   }
 }
