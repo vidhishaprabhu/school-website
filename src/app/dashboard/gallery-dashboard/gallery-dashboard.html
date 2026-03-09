@@ -4,6 +4,7 @@
     class="btn bg-primary btn-sm background text-white"
     data-bs-toggle="modal"
     data-bs-target="#myModal"
+    (click)="isEdit===false;selectedGalleries.reset()"
   >
     <i class="fa fa-plus"></i> Add Gallery Event
   </a>
@@ -11,6 +12,7 @@
 <table class="table">
   <thead class="table-dark">
     <tr>
+      <th class="background">SlNo</th>
       <th class="background">Title</th>
       <th class="background">Event Date</th>
       <th class="background">Photos</th>
@@ -18,22 +20,29 @@
     </tr>
   </thead>
   <tbody>
+    @for (gallery of galleries; track $index) {
     <tr>
-      <td>Event 1</td>
-      <td>2023-10-01</td>
+      <td>{{$index+1}}</td>
+      <td>{{gallery.title}}</td>
+      <td>{{gallery.date | date}}</td>
       <td>
-        <img src="photo1.jpg" alt="Event 1" class="img-thumbnail" />
-        <img src="photo2.jpg" alt="Event 1" class="img-thumbnail" />
+        <div class="ratio ratio-4x3">
+          @for (img of gallery.imageUrl.split(','); track $index) {
+          <img [src]="img.trim()" width="30" height="30" />
+          }
+        </div>
       </td>
       <td class="text-end">
         <i
           class="fa fa-pencil me-4"
           data-bs-toggle="modal"
           data-bs-target="#myModal"
+          (click)="edit(gallery)"
         ></i>
-        <i class="fa fa-trash text-danger"></i>
+        <i class="fa fa-trash text-danger" (click)="deleteGallery(gallery)"></i>
       </td>
     </tr>
+  }
   </tbody>
 </table>
 
@@ -53,7 +62,7 @@
 
       <!-- Modal body -->
       <div class="modal-body">
-        <form>
+        <form [formGroup]="selectedGalleries">
           <div class="row">
             <!-- Part 1: Event Details -->
             <div class="col-md-12">
@@ -61,6 +70,7 @@
                 <label for="eventTitle" class="form-label">Event Title</label>
                 <input
                   type="text"
+                  formControlName="title"
                   class="form-control"
                   id="eventTitle"
                   placeholder="Enter event title"
@@ -68,7 +78,7 @@
               </div>
               <div class="mb-3">
                 <label for="eventDate" class="form-label">Event Date</label>
-                <input type="date" class="form-control" id="eventDate" />
+                <input type="date" formControlName="date" class="form-control" id="eventDate" />
               </div>
               <div class="mb-3">
                 <label for="location" class="form-label"
@@ -76,6 +86,7 @@
                 >
                 <input
                   type="text"
+                  formControlName="imageUrl"
                   class="form-control"
                   id="images"
                   placeholder="Enter image URLs"
@@ -90,6 +101,8 @@
             type="button"
             class="btn btn-danger background btn-sm"
             data-bs-dismiss="modal"
+            [disabled]="selectedGalleries.invalid"
+            (click)="onSubmit()"
           >
             Submit
           </button>

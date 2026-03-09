@@ -38,5 +38,19 @@ export class ContactDashboard {
     viewContact(contact:any){
       this.selectedContact=contact
     }
+    deleteContact(contact :any){
+      this.apiService.deleteContact(contact._id).subscribe({
+        next: (res: any) => {
+          if (res) {
+            alert(res.message);
+            this.getContacts();
+          }
+        },
+        error: (error) => {
+          console.error(error);
+        },
+      });
+
+    }
 
 }

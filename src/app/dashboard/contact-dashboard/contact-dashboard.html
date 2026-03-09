@@ -22,12 +22,13 @@
       <td class="text-end">
         <!-- <i class="fa fa-pencil me-4"></i> -->
         <i
+          style="cursor: pointer;"
           class="fa fa-eye me-4"
           data-bs-toggle="modal"
           data-bs-target="#myModal"
           (click)="viewContact(contact)"
         ></i>
-        <i class="fa fa-trash text-danger"></i>
+        <i class="fa fa-trash text-danger" style="cursor: pointer;" (click)="deleteContact(contact)"></i>
       </td>
     </tr>
     }

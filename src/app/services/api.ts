@@ -23,7 +23,19 @@ export class Api {
   submitForm(formData:any){
     return this.http.post(`${environment.apiUrl}/contact`,formData);
   }
+  addGallery(formData:any){
+    return this.http.post(`${environment.apiUrl}/gallery`,formData);
+  }
   getContacts(){
     return this.http.get(`${environment.apiUrl}/get-contacts`)
+  }
+  deleteContact(id:string){
+    return this.http.delete(`${environment.apiUrl}/delete-contact/${id}`)
+  }
+  deleteGallery(id:string){
+    return this.http.delete(`${environment.apiUrl}/delete-gallery/${id}`)
+  }
+  updateGallery(id:string,formData:any){
+    return this.http.put(`${environment.apiUrl}/update-gallery/${id}`,formData);
   }
 }
