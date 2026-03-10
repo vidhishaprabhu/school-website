@@ -11,4 +11,8 @@ import { Gallery } from './gallery/gallery';
   templateUrl: './home.html',
   styleUrl: './home.scss',
 })
-export class Home {}
+export class Home {
+  ngOnInit(){
+    window.scrollTo(0, 0);
+  }
+}

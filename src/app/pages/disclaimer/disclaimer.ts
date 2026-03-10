@@ -7,5 +7,8 @@ import { Component } from '@angular/core';
   styleUrl: './disclaimer.scss'
 })
 export class Disclaimer {
+  ngOnInit(){
+    window.scrollTo(0, 0);
+  }
 
 }

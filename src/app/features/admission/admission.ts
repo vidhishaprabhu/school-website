@@ -74,6 +74,9 @@ export class Admission {
 
     })
   }
+  ngOnInit(){
+    window.scrollTo(0, 0);
+  }
   copyAddress(event:Event){
     const isChecked=(event.target as HTMLInputElement).checked;
     const present=this.admissionForm.get('addressDetails.presentAddress');

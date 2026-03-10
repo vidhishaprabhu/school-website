@@ -19,6 +19,7 @@ export class Notices {
   constructor(private apiService:Api){}
   ngOnInit(){
     this.getNotices();
+    window.scrollTo(0, 0);
   }
   getNotices(){
     this.apiService.getNotice().subscribe({
