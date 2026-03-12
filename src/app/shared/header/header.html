@@ -10,7 +10,9 @@
             alt=""
           />
         </div>
-        <div class="col-sm-6 pt-2"><h2 class="fs-2">Vidyniketnan School</h2></div>
+        <div class="col-sm-6 pt-2">
+          <h2 class="fs-2">Vidyniketnan School</h2>
+        </div>
       </div></a
     >
     <button
@@ -63,18 +65,31 @@
             aria-labelledby="moreDropdown"
           >
             <li>
-              <a class="dropdown-item background" routerLink="/privacy-policy">Privacy & Policy</a>
+              <a class="dropdown-item background" routerLink="/privacy-policy"
+                >Privacy & Policy</a
+              >
             </li>
-            <li><a class="dropdown-item background" routerLink="/disclaimer">Disclaimer</a></li>
-            <li><a class="dropdown-item background" routerLink="/dashboard">Dashboard</a></li>
+            <li>
+              <a class="dropdown-item background" routerLink="/disclaimer"
+                >Disclaimer</a
+              >
+            </li>
+            <li>
+              <a class="dropdown-item background" routerLink="/dashboard"
+                >Dashboard</a
+              >
+            </li>
             @if(isLoggedIn()){
-  <li>
-    <a class="dropdown-item background" (click)="logout()">Logout</a>
-  </li>
-}
+            <li>
+              <a class="dropdown-item background" (click)="logout()">Logout</a>
+            </li>
+            }
 
             <!-- Add more links as needed -->
           </ul>
+        </li>
+        <li class="nav-item">
+          <button class="btn btn-primary" routerLink="/login">Login</button>
         </li>
       </ul>
     </div>
