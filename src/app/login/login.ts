@@ -28,6 +28,7 @@ export class Login {
           if(token){
             localStorage.setItem('token',token);
             localStorage.setItem('user',JSON.stringify(res.user))
+            this.authService.startSessionTimer();
             this.router.navigate(['/dashboard'])
           }
         }

@@ -2,7 +2,24 @@
   <div class="row justify-content-center mt-5 mb-5">
     <div class="col-sm-4"></div>
     <div class="col-sm-4 border border-2 rounded p-4 bg-light">
-      <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+      <form [formGroup]="registerForm">
+        <div data-mdb-input-init class="form-outline mb-4">
+          <label class="form-label" for="name">Name</label>
+          <span class="text-danger">*</span>
+          <input
+            type="text"
+            formControlName="name"
+            id="name"
+            class="form-control"
+            placeholder="Enter your Name"
+          />
+          @if (registerForm.get('name')?.invalid &&
+          registerForm.get('name')?.touched) {
+          <div>
+            <span class="text-danger">Name is required</span>
+          </div>
+          }
+        </div>
         <!-- Email input -->
         <div data-mdb-input-init class="form-outline mb-4">
           <label class="form-label" for="email">Email address</label>
@@ -14,12 +31,11 @@
             class="form-control"
             placeholder="Enter your email"
           />
-          @if (loginForm.get('email')?.invalid && loginForm.get('email')?.touched) {
-          <div
-          >
-            <span class="text-danger">Email is required</span>
-          </div>
-        }
+          @if (registerForm.get('email')?.invalid && registerForm.get('email')?.touched) {
+            <div>
+              <span class="text-danger">Email is required</span>
+            </div>
+          }
         </div>
 
         <!-- Password input -->
@@ -33,24 +49,23 @@
             class="form-control"
             placeholder="Enter your password"
           />
-          @if(loginForm.get('password')?.invalid && loginForm.get('password')?.touched){
-          <div
-          >
-            <span class="text-danger">Password is required</span>
-          </div>
-        }
+          @if (registerForm.get('password')?.invalid && registerForm.get('password')?.touched) {
+            <div>
+              <span class="text-danger">Password is required</span>
+            </div>
+          }
         </div>
 
         <!-- Submit button -->
         <button
           type="submit"
-          [disabled]="loginForm.invalid"
+          [disabled]="registerForm.invalid"
           data-mdb-button-init
           data-mdb-ripple-init
           class="btn btn-primary btn-block background mb-4"
-          (click)="onLogin()"
+          (click)="register()"
         >
-          Sign in
+          Sign Up
         </button>
       </form>
     </div>

@@ -13,6 +13,7 @@ import { Dashboard } from './dashboard/dashboard';
 import { Login } from './login/login';
 import { Notices } from './features/notices/notices';
 import { authGuard } from './guard/auth-guard';
+import { Register } from './register/register';
 
 export const routes: Routes = [
   {
@@ -59,6 +60,10 @@ export const routes: Routes = [
     path:'dashboard',
     component:Dashboard,
     canActivate:[authGuard]
+  },
+  {
+    path:'register',
+    component:Register
   },
   {
     path:'login',
