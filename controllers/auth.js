@@ -32,12 +32,13 @@ exports.login=async(req,res)=>{
     }
     const existingUser=await User.findOne({email});
     if(!existingUser){
-      return res.status(400).json({message:'Invalid Credentials'})
+      return res.status(400).json({message:'Email does not match'})
     }
     const isMatch=await bcrypt.compare(password,existingUser.password);
     if(!isMatch){
-      return res.status(400).json({message:'Invalid Credentials'})
+      return res.status(400).json({message:'Password does not match'})
     }
+    
     const token=jwt.sign({id:existingUser._id,email:existingUser.email,name:existingUser.name},process.env.JWT_SECRET,{expiresIn:'1h'});
     console.log("LOGIN SECRET:", process.env.JWT_SECRET);
     return res.status(200).json({message:'Login successful',token,user:{id:existingUser._id,email:existingUser.email,name:existingUser.name}})
