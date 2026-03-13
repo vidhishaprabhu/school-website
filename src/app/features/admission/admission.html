@@ -18,6 +18,11 @@
               placeholder="Enter full name"
               required
             />
+            @if (admissionForm.get('studentDetails.fullName')?.invalid && admissionForm.get('studentDetails.fullName')?.touched) {
+            <div>
+              <span class="text-danger">Full Name is required</span>
+            </div>
+          }
           </div>
           <div class="col-md-3">
             <label class="form-label">Date of Birth</label>
@@ -29,6 +34,11 @@
               name="dob"
               required
             />
+            @if (admissionForm.get('studentDetails.dob')?.invalid && admissionForm.get('studentDetails.dob')?.touched) {
+            <div>
+              <span class="text-danger">DOB is required</span>
+            </div>
+          }
           </div>
           <div class="col-md-3">
             <label class="form-label">Gender</label>
@@ -83,6 +93,11 @@
               placeholder="Enter age"
               required
             />
+            @if (admissionForm.get('studentDetails.age')?.invalid && admissionForm.get('studentDetails.age')?.touched) {
+            <div>
+              <span class="text-danger">Age is required</span>
+            </div>
+          }
           </div>
           <div class="col-md-2">
             <label class="form-label">Blood Group</label>
@@ -104,6 +119,11 @@
               name="religion"
               placeholder="Enter religion"
             />
+            @if (admissionForm.get('studentDetails.religion')?.invalid && admissionForm.get('studentDetails.religion')?.touched) {
+            <div>
+              <span class="text-danger">Religion is required</span>
+            </div>
+          }
           </div>
           <div class="col-md-3">
             <label class="form-label">Caste Category</label>
@@ -120,6 +140,11 @@
               <option>OBC</option>
               <option>Others</option>
             </select>
+            @if (admissionForm.get('studentDetails.casteCategory')?.invalid && admissionForm.get('studentDetails.casteCategory')?.touched) {
+            <div>
+              <span class="text-danger">Cast-Category is required</span>
+            </div>
+          }
           </div>
           <div class="col-md-2">
             <label class="form-label">Nationality</label>
@@ -131,6 +156,11 @@
               name="nationality"
               placeholder="Enter nationality"
             />
+            @if (admissionForm.get('studentDetails.nationality')?.invalid && admissionForm.get('studentDetails.nationality')?.touched) {
+            <div>
+              <span class="text-danger">Nationality is required</span>
+            </div>
+          }
           </div>
           <div class="col-md-2">
             <label class="form-label">Mother Tongue</label>
@@ -142,6 +172,11 @@
               name="motherTongue"
               placeholder="Enter mother tongue"
             />
+            @if (admissionForm.get('studentDetails.motherTongue')?.invalid && admissionForm.get('studentDetails.motherTongue')?.touched) {
+            <div>
+              <span class="text-danger">Mother-Tongue is required</span>
+            </div>
+          }
           </div>
           <div class="col-md-3">
             <label class="form-label">Aadhaar Number</label>
@@ -153,6 +188,11 @@
               name="aadhaar"
               placeholder="Enter Aadhaar number"
             />
+            @if (admissionForm.get('studentDetails.aadharNumber')?.invalid && admissionForm.get('studentDetails.aadharNumber')?.touched) {
+            <div>
+              <span class="text-danger">Aadhar Number is required</span>
+            </div>
+          }
           </div>
         </div>
       </div>
@@ -182,6 +222,11 @@
               <option>5</option>
               <!-- Add more classes as needed -->
             </select>
+            @if (this.admissionForm.get('admissionDetails.admissionForClass')?.invalid && this.admissionForm.get('admissionDetails.admissionForClass')?.touched) {
+            <div>
+              <span class="text-danger">Selection of class is required</span>
+            </div>
+          }
           </div>
           <div class="col-md-4">
             <label class="form-label">Academic Year</label>
@@ -193,6 +238,11 @@
               name="academicYear"
               placeholder="2025-2026"
             />
+            @if (this.admissionForm.get('admissionDetails.academicYear')?.invalid && this.admissionForm.get('admissionDetails.academicYear')?.touched) {
+            <div>
+              <span class="text-danger">Academic Year is required</span>
+            </div>
+          }
           </div>
           <div class="col-md-4">
             <label class="form-label">Previous School Name</label>
@@ -237,6 +287,11 @@
               name="fatherName"
               placeholder="Father's full name"
             />
+            @if (admissionForm.get('father.fullName')?.invalid && admissionForm.get('father.fullName')?.touched) {
+            <div>
+              <span class="text-danger">Father's Full Name is required</span>
+            </div>
+          }
           </div>
           <div class="col-md-2">
             <label class="form-label">Qualification</label>
@@ -248,6 +303,11 @@
               name="fatherQualification"
               placeholder="Qualification"
             />
+            @if (admissionForm.get('father.qualification')?.invalid && admissionForm.get('father.qualification')?.touched) {
+            <div>
+              <span class="text-danger">Qualification is required</span>
+            </div>
+          }
           </div>
           <div class="col-md-2">
             <label class="form-label">Occupation</label>
@@ -259,6 +319,11 @@
               name="fatherOccupation"
               placeholder="Occupation"
             />
+            @if (admissionForm.get('father.occupation')?.invalid && admissionForm.get('father.occupation')?.touched) {
+            <div>
+              <span class="text-danger">Occupation is required</span>
+            </div>
+          }
           </div>
           <div class="col-md-4">
             <label class="form-label">Office Address</label>
@@ -280,6 +345,11 @@
               name="fatherContact"
               placeholder="Contact number"
             />
+            @if (admissionForm.get('father.contactNumber')?.invalid && admissionForm.get('father.contactNumber')?.touched) {
+            <div>
+              <span class="text-danger">Contact Number is required</span>
+            </div>
+          }
           </div>
           <div class="col-md-3">
             <label class="form-label">Email</label>
@@ -301,6 +371,11 @@
               name="fatherAadhaar"
               placeholder="Aadhaar number"
             />
+            @if (admissionForm.get('father.aadharNumber')?.invalid && admissionForm.get('father.aadharNumber')?.touched) {
+            <div>
+              <span class="text-danger">Aadhar Number is required</span>
+            </div>
+          }
           </div>
         </div>
         <!-- Mother's Info -->
@@ -318,6 +393,11 @@
               name="motherName"
               placeholder="Mother's full name"
             />
+            @if (admissionForm.get('mother.fullName')?.invalid && admissionForm.get('mother.fullName')?.touched) {
+            <div>
+              <span class="text-danger">Mother's Full Name is required</span>
+            </div>
+          }
           </div>
           <div class="col-md-2">
             <label class="form-label">Qualification</label>
@@ -329,6 +409,11 @@
               name="motherQualification"
               placeholder="Qualification"
             />
+            @if (admissionForm.get('mother.qualification')?.invalid && admissionForm.get('mother.qualification')?.touched) {
+            <div>
+              <span class="text-danger">Qualification is required</span>
+            </div>
+          }
           </div>
           <div class="col-md-2">
             <label class="form-label">Occupation</label>
@@ -340,6 +425,11 @@
               name="motherOccupation"
               placeholder="Occupation"
             />
+            @if (admissionForm.get('mother.occupation')?.invalid && admissionForm.get('mother.occupation')?.touched) {
+            <div>
+              <span class="text-danger">Occupation is required</span>
+            </div>
+          }
           </div>
           <div class="col-md-4">
             <label class="form-label">Office Address</label>
@@ -361,6 +451,11 @@
               name="motherContact"
               placeholder="Contact number"
             />
+            @if (admissionForm.get('mother.contactNumber')?.invalid && admissionForm.get('mother.contactNumber')?.touched) {
+            <div>
+              <span class="text-danger">Contact Number is required</span>
+            </div>
+          }
           </div>
           <div class="col-md-3">
             <label class="form-label">Email</label>
@@ -382,6 +477,11 @@
               name="motherAadhaar"
               placeholder="Aadhaar number"
             />
+            @if (admissionForm.get('mother.aadharNumber')?.invalid && admissionForm.get('mother.aadharNumber')?.touched) {
+            <div>
+              <span class="text-danger">Aadhar Number is required</span>
+            </div>
+          }
           </div>
         </div>
         <div>
@@ -450,6 +550,11 @@
               rows="2"
               placeholder="Enter present address"
             ></textarea>
+            @if (admissionForm.get('addressDetails.presentAddress')?.invalid && admissionForm.get('addressDetails.presentAddress')?.touched) {
+            <div>
+              <span class="text-danger">Present Address is required</span>
+            </div>
+          }
           </div>
           <div class="col-md-6">
             <label class="form-label">Permanent Address</label>
@@ -461,6 +566,11 @@
               rows="2"
               placeholder="Enter permanent address"
             ></textarea>
+            @if (admissionForm.get('addressDetails.permanentAddress')?.invalid && admissionForm.get('addressDetails.permanentAddress')?.touched) {
+            <div>
+              <span class="text-danger">Permanent Address is required</span>
+            </div>
+          }
             <div class="form-check mt-2">
               <input
                 class="form-check-input"
@@ -483,6 +593,11 @@
               name="emergencyContact"
               placeholder="Emergency contact number"
             />
+            @if (admissionForm.get('addressDetails.emergencyContactNumber')?.invalid && admissionForm.get('addressDetails.emergencyContactNumber')?.touched) {
+            <div>
+              <span class="text-danger">Emergency Contact Number is required</span>
+            </div>
+          }
           </div>
           <div class="col-md-4">
             <label class="form-label">Alternative Contact Number</label>
@@ -494,6 +609,11 @@
               name="altContact"
               placeholder="Alternative contact number"
             />
+            @if (admissionForm.get('addressDetails.alternativeContactNumber')?.invalid && admissionForm.get('addressDetails.alternativeContactNumber')?.touched) {
+            <div>
+              <span class="text-danger">Alternative Contact Number is required</span>
+            </div>
+          }
           </div>
         </div>
       </div>
@@ -518,6 +638,11 @@
             required
 
           />
+          @if (admissionForm.get('documents.studentPhoto')?.invalid && admissionForm.get('documents.studentPhoto')?.touched) {
+          <div>
+            <span class="text-danger">Student Photo is required</span>
+          </div>
+        }
         </div>
       </div>
     </div>
@@ -541,6 +666,7 @@
         <div class="row g-3 align-items-center">
           <div class="col-md-3">
             <label class="form-label">Date</label>
+            <span class="text-danger">*</span>
             <input
               formControlName="declarationDate"
               type="date"
@@ -548,6 +674,11 @@
               name="declarationDate"
               required
             />
+            @if (admissionForm.get('declaration.declarationDate') && admissionForm.get('declaration.declarationDate')?.touched) {
+            <div>
+              <span class="text-danger">Declaration Date is required</span>
+            </div>
+          }
           </div>
           <div class="col-md-9 text-end">
             <button
