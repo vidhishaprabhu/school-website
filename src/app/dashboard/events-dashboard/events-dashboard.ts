@@ -2,10 +2,11 @@ import { Component } from '@angular/core';
 import { Api } from '../../services/api';
 import { DatePipe } from '@angular/common';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-events-dashboard',
-  imports: [DatePipe, ReactiveFormsModule],
+  imports: [DatePipe, ReactiveFormsModule, MatSnackBarModule],
   templateUrl: './events-dashboard.html',
   styleUrl: './events-dashboard.scss',
 })
@@ -17,6 +18,7 @@ export class EventsDashboard {
   constructor(
     private apiService: Api,
     private fb: FormBuilder,
+    private snackBar: MatSnackBar,
   ) {
     this.selectedEvent = fb.group({
       title: ['', Validators.required],
@@ -45,11 +47,13 @@ export class EventsDashboard {
     });
   }
   onSubmit() {
-    if (this.isEdit===true) {
+    if (this.isEdit === true) {
       this.apiService.updateEvent(this.id, this.selectedEvent.value).subscribe({
         next: (res: any) => {
           if (res) {
-            alert(res.message);
+            this.snackBar.open(res.message, 'Close', {
+              duration: 3000,
+            });
             this.getEvents();
           }
         },
@@ -61,7 +65,9 @@ export class EventsDashboard {
       this.apiService.addEvent(this.selectedEvent.value).subscribe({
         next: (res: any) => {
           if (res) {
-            alert(res.message);
+            this.snackBar.open(res.message, 'Close', {
+              duration: 3000,
+            });
             this.selectedEvent.reset();
             this.getEvents();
           }
@@ -72,11 +78,13 @@ export class EventsDashboard {
       });
     }
   }
-  deleteEvent(event:any){
+  deleteEvent(event: any) {
     this.apiService.deleteEvent(event._id).subscribe({
       next: (res: any) => {
         if (res) {
-          alert(res.message);
+          this.snackBar.open(res.message, 'Close', {
+            duration: 3000,
+          });
           this.getEvents();
         }
       },
@@ -84,7 +92,6 @@ export class EventsDashboard {
         console.error(error);
       },
     });
-
   }
   editEvent(event: any) {
     this.isEdit = true;

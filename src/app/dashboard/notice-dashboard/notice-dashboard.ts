@@ -2,10 +2,11 @@ import { Component } from '@angular/core';
 import { Api } from '../../services/api';
 import { DatePipe } from '@angular/common';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-notice-dashboard',
-  imports: [DatePipe, ReactiveFormsModule],
+  imports: [DatePipe, ReactiveFormsModule, MatSnackBarModule],
   templateUrl: './notice-dashboard.html',
   styleUrl: './notice-dashboard.scss',
 })
@@ -13,10 +14,11 @@ export class NoticeDashboard {
   notices: any = [];
   selectedNotice: any = null;
   id: string = '';
-  isEdit:boolean=false;
+  isEdit: boolean = false;
   constructor(
     private apiService: Api,
     private fb: FormBuilder,
+    private snackBar: MatSnackBar,
   ) {
     this.selectedNotice = this.fb.group({
       title: ['', Validators.required],
@@ -29,40 +31,43 @@ export class NoticeDashboard {
     this.getNotice();
   }
   onSubmit() {
-    if(this.isEdit===true){
-      this.apiService.updateNotice(this.id,this.selectedNotice.value).subscribe({
-      next: (res: any) => {
-        if (res) {
-          alert(res.message);
-          this.getNotice();
-          // console.log(this.notices);
-        }
-      },
-      error: (error) => {
-        console.error(error);
-      },
-    });
-
-
-    }
-    else{
+    if (this.isEdit === true) {
+      this.apiService
+        .updateNotice(this.id, this.selectedNotice.value)
+        .subscribe({
+          next: (res: any) => {
+            if (res) {
+              this.snackBar.open(res.message, 'Close', {
+                duration: 3000,
+              });
+              this.getNotice();
+              // console.log(this.notices);
+            }
+          },
+          error: (error) => {
+            console.error(error);
+          },
+        });
+    } else {
       this.apiService.addNotice(this.selectedNotice.value).subscribe({
-      next: (res: any) => {
-        if (res) {
-          alert(res.message);
-          this.getNotice();
-          this.selectedNotice.reset();
-          // console.log(this.notices);
-        }
-      },
-      error: (error) => {
-        console.error(error);
-      },
-    });
+        next: (res: any) => {
+          if (res) {
+            this.snackBar.open(res.message, 'Close', {
+              duration: 3000,
+            });
+            this.getNotice();
+            this.selectedNotice.reset();
+            // console.log(this.notices);
+          }
+        },
+        error: (error) => {
+          console.error(error);
+        },
+      });
     }
   }
   editNotice(notice: any) {
-    this.isEdit=true;
+    this.isEdit = true;
     this.selectedNotice.patchValue({
       title: notice.title,
       description: notice.description,
@@ -93,11 +98,13 @@ export class NoticeDashboard {
 
     return `${year}-${month}-${day}`;
   }
-  deleteNotice(notice:any){
+  deleteNotice(notice: any) {
     this.apiService.deleteNotice(notice._id).subscribe({
       next: (res: any) => {
         if (res) {
-          alert(res.message);
+          this.snackBar.open(res.message, 'Close', {
+            duration: 3000,
+          });
           this.getNotice();
           // console.log(this.notices);
         }
@@ -106,6 +113,5 @@ export class NoticeDashboard {
         console.error(error);
       },
     });
-
   }
 }

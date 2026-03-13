@@ -2,10 +2,11 @@ import { Component } from '@angular/core';
 import { Api } from '../../services/api';
 import { DatePipe } from '@angular/common';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-gallery-dashboard',
-  imports: [DatePipe, ReactiveFormsModule],
+  imports: [DatePipe, ReactiveFormsModule, MatSnackBarModule],
   templateUrl: './gallery-dashboard.html',
   styleUrl: './gallery-dashboard.scss',
 })
@@ -22,6 +23,7 @@ export class GalleryDashboard {
   constructor(
     private apiService: Api,
     private fb: FormBuilder,
+    private snackBar: MatSnackBar,
   ) {
     this.selectedGalleries = fb.group({
       title: ['', Validators.required],
@@ -53,7 +55,9 @@ export class GalleryDashboard {
         .subscribe({
           next: (res: any) => {
             if (res) {
-              alert(res.message);
+              this.snackBar.open(res.message, 'Close', {
+                duration: 3000,
+              });
               this.getGalleries();
               this.selectedGalleries.reset();
             }
@@ -66,7 +70,9 @@ export class GalleryDashboard {
       this.apiService.addGallery(this.selectedGalleries.value).subscribe({
         next: (res: any) => {
           if (res) {
-            alert(res.message);
+            this.snackBar.open(res.message, 'Close', {
+              duration: 3000,
+            });
             this.getGalleries();
             this.selectedGalleries.reset();
           }
@@ -95,19 +101,19 @@ export class GalleryDashboard {
 
     return `${year}-${month}-${day}`;
   }
-  deleteGallery(gallery:any) {
-    this.apiService
-      .deleteGallery(gallery._id)
-      .subscribe({
-        next: (res: any) => {
-          if (res) {
-            alert(res.message);
-            this.getGalleries();
-          }
-        },
-        error: (error) => {
-          console.error(error);
-        },
-      });
+  deleteGallery(gallery: any) {
+    this.apiService.deleteGallery(gallery._id).subscribe({
+      next: (res: any) => {
+        if (res) {
+          this.snackBar.open(res.message, 'Close', {
+            duration: 3000,
+          });
+          this.getGalleries();
+        }
+      },
+      error: (error) => {
+        console.error(error);
+      },
+    });
   }
 }
