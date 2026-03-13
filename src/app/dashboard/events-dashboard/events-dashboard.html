@@ -73,14 +73,42 @@
                   id="eventTitle"
                   placeholder="Enter event title"
                 />
+                @if(selectedEvent.get('title')?.invalid &&
+                selectedEvent.get('title')?.touched){
+                <div>
+                  <span class="text-danger">Event Title is required</span>
+                </div>
+                }
               </div>
               <div class="mb-3">
                 <label for="eventDate" class="form-label">Event Date</label>
-                <input type="date" formControlName="date" class="form-control" id="eventDate" />
+                <input
+                  type="date"
+                  formControlName="date"
+                  class="form-control"
+                  id="eventDate"
+                />
+                @if(selectedEvent.get('date')?.invalid &&
+                selectedEvent.get('date')?.touched){
+                <div>
+                  <span class="text-danger">Event Date is required</span>
+                </div>
+                }
               </div>
               <div class="mb-3">
                 <label for="eventTime" class="form-label">Event Time</label>
-                <input type="time" formControlName="eventTime" class="form-control" id="eventTime" />
+                <input
+                  type="time"
+                  formControlName="eventTime"
+                  class="form-control"
+                  id="eventTime"
+                />
+                @if(selectedEvent.get('eventTime')?.invalid &&
+                selectedEvent.get('eventTime')?.touched){
+                <div>
+                  <span class="text-danger">Event Time is required</span>
+                </div>
+                }
               </div>
               <div class="mb-3">
                 <label for="location" class="form-label">Location</label>
@@ -91,6 +119,12 @@
                   id="location"
                   placeholder="Enter event location"
                 />
+                @if(selectedEvent.get('location')?.invalid &&
+                selectedEvent.get('location')?.touched){
+                <div>
+                  <span class="text-danger">Event Location is required</span>
+                </div>
+                }
               </div>
             </div>
             <!-- Part 2: Event Description -->
@@ -106,6 +140,12 @@
                   rows="8"
                   placeholder="Enter event description"
                 ></textarea>
+                @if(selectedEvent.get('description')?.invalid &&
+                selectedEvent.get('description')?.touched){
+                <div>
+                  <span class="text-danger">Event Description is required</span>
+                </div>
+                }
               </div>
             </div>
             <div class="col-md-6">
@@ -120,6 +160,12 @@
                   rows="8"
                   placeholder="Enter event short description"
                 ></textarea>
+                @if(selectedEvent.get('shortDescription')?.invalid &&
+                selectedEvent.get('shortDescription')?.touched){
+                <div>
+                  <span class="text-danger">Event Short-Description is required</span>
+                </div>
+                }
               </div>
             </div>
           </div>
