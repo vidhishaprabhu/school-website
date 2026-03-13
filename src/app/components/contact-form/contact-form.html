@@ -22,9 +22,10 @@
                 placeholder="Your Name"
                 required
               />
-              <div *ngIf="contactForm.get('name')?.invalid && contactForm.get('name')?.touched" class="text-danger">
-                Name is required
-              </div>
+              @if(contactForm.get('name')?.invalid &&
+              contactForm.get('name')?.touched){
+              <div class="text-danger">Name is required</div>
+              }
             </div>
             <div class="mb-3">
               <label for="email" class="form-label"
@@ -39,9 +40,10 @@
                 placeholder="you@example.com"
                 required
               />
-              <div class="text-danger" *ngIf="contactForm.get('email')?.invalid && contactForm.get('email')?.touched">
-                Email is required
-              </div>
+              @if (contactForm.get('email')?.invalid &&
+              contactForm.get('email')?.touched) {
+              <div class="text-danger">Email is required</div>
+              }
             </div>
             <div class="mb-3">
               <label for="phone" class="form-label"
@@ -56,9 +58,10 @@
                 placeholder="+91-9876543210"
                 required
               />
-              <div class="text-danger" *ngIf="contactForm.get('phone')?.invalid && contactForm.get('phone')?.touched">
-                Phone is required
-              </div>
+              @if(contactForm.get('phone')?.invalid &&
+              contactForm.get('phone')?.touched){
+              <div class="text-danger">Phone is required</div>
+              }
             </div>
             <div class="mb-3">
               <label for="subject" class="form-label"
@@ -73,9 +76,10 @@
                 placeholder="Subject"
                 required
               />
-              <div class="text-danger" *ngIf="contactForm.get('subject')?.invalid && contactForm.get('subject')?.touched">
-                Subject is required
-              </div>
+              @if (contactForm.get('subject')?.invalid &&
+              contactForm.get('subject')?.touched) {
+              <div class="text-danger">Subject is required</div>
+              }
             </div>
             <div class="mb-3">
               <label for="message" class="form-label"
@@ -90,9 +94,10 @@
                 placeholder="Type your message here..."
                 required
               ></textarea>
-              <div class="text-danger" *ngIf="contactForm.get('message')?.invalid && contactForm.get('message')?.touched">
-                Message is required
-              </div>
+              @if (contactForm.get('message')?.invalid &&
+              contactForm.get('message')?.touched) {
+              <div class="text-danger">Message is required</div>
+              }
             </div>
             <div class="d-grid">
               <button
