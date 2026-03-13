@@ -66,6 +66,7 @@
             <div class="col-md-6">
               <div class="mb-3">
                 <label for="teacherName" class="form-label">Teacher Name</label>
+                <span class="text-danger">*</span>
                 <input
                   type="text"
                   formControlName="name"
@@ -73,9 +74,15 @@
                   id="teacherName"
                   placeholder="Enter teacher name"
                 />
+                @if (selectedTeacher.get('name')?.invalid && selectedTeacher.get('name')?.touched) {
+                <div>
+                  <span class="text-danger">Teacher Name is required</span>
+                </div>
+              }
               </div>
               <div class="mb-3">
                 <label for="subject" class="form-label">Subject</label>
+                <span class="text-danger">*</span>
                 <input
                   type="text"
                   formControlName="subject"
@@ -83,9 +90,15 @@
                   id="subject"
                   placeholder="Enter subject"
                 />
+                @if (selectedTeacher.get('subject')?.invalid && selectedTeacher.get('subject')?.touched) {
+                <div>
+                  <span class="text-danger">Subject is required</span>
+                </div>
+              }
               </div>
               <div class="mb-3">
                 <label for="designation" class="form-label">Designation</label>
+                <span class="text-danger">*</span>
                 <input
                   type="text"
                   formControlName="designation"
@@ -93,10 +106,15 @@
                   id="designation"
                   placeholder="Enter designation"
                 />
+                @if (selectedTeacher.get('designation')?.invalid && selectedTeacher.get('designation')?.touched) {
+                <div>
+                  <span class="text-danger">Teacher Designation is required</span>
+                </div>
+              }
               </div>
               <div class="mb-3">
                 <label for="profilePicture" class="form-label"
-                  >Profile Picture</label
+                  >Profile Picture <span class="text-danger">*</span></label
                 >
                 <input
                   type="text"
@@ -105,12 +123,17 @@
                   id="profilePicture"
                   placeholder="Enter profile picture URL"
                 />
+                @if (selectedTeacher.get('image')?.invalid && selectedTeacher.get('image')?.touched) {
+                <div>
+                  <span class="text-danger">Teacher Image is required</span>
+                </div>
+              }
               </div>
             </div>
             <!-- Part 2: Event Description -->
             <div class="col-md-6">
               <div class="mb-3 h-100 d-flex flex-column">
-                <label for="bio" class="form-label">Bio</label>
+                <label for="bio" class="form-label">Bio <span class="text-danger">*</span></label>
                 <textarea
                   class="form-control flex-grow-1"
                   formControlName="bio"
@@ -118,6 +141,11 @@
                   rows="8"
                   placeholder="Enter bio"
                 ></textarea>
+                @if (selectedTeacher.get('bio')?.invalid && selectedTeacher.get('bio')?.touched) {
+                <div>
+                  <span class="text-danger">Teacher Bio is required</span>
+                </div>
+              }
               </div>
             </div>
           </div>

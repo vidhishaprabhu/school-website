@@ -64,6 +64,7 @@
             <div class="col-md-6">
               <div class="mb-3">
                 <label for="eventTitle" class="form-label">Notice Title</label>
+                <span class="text-danger">*</span>
                 <input
                   type="text"
                   formControlName="title"
@@ -71,9 +72,15 @@
                   id="eventTitle"
                   placeholder="Enter notice title"
                 />
+                @if(selectedNotice.get('title')?.invalid && selectedNotice.get('title')?.touched){
+                <div>
+                  <span class="text-danger">Event Notice Title is required</span>
+                </div>
+              }
               </div>
               <div class="mb-3">
                 <label for="category" class="form-label">Category</label>
+                <span class="text-danger">*</span>
                 <input
                   type="text"
                   formControlName="category"
@@ -81,9 +88,15 @@
                   id="category"
                   placeholder="Enter notice category"
                 />
+                @if(selectedNotice.get('category')?.invalid && selectedNotice.get('category')?.touched){
+                <div>
+                  <span class="text-danger">Event Notice Category is required</span>
+                </div>
+              }
               </div>
               <div class="mb-3">
                 <label for="date" class="form-label">Published Date</label>
+                <span class="text-danger">*</span>
                 <input
                   type="date"
                   formControlName="date"
@@ -91,13 +104,18 @@
                   id="date"
                   placeholder="Enter published date"
                 />
+                @if(selectedNotice.get('date')?.invalid && selectedNotice.get('date')?.touched){
+                <div>
+                  <span class="text-danger">Date is required</span>
+                </div>
+              }
               </div>
             </div>
             <!-- Part 2: Event Description -->
             <div class="col-md-6">
               <div class="mb-3 h-100 d-flex flex-column">
                 <label for="noticeDescription" class="form-label"
-                  >Notice Description</label
+                  >Notice Desc <span class="text-danger">*</span></label
                 >
                 <textarea
                   class="form-control flex-grow-1"
@@ -106,6 +124,11 @@
                   rows="8"
                   placeholder="Enter notice description"
                 ></textarea>
+                @if(selectedNotice.get('description')?.invalid && selectedNotice.get('description')?.touched){
+                <div>
+                  <span class="text-danger">Event Notice Description is required</span>
+                </div>
+              }
               </div>
             </div>
           </div>

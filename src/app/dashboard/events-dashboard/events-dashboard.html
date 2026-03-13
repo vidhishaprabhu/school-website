@@ -66,6 +66,7 @@
             <div class="col-md-6">
               <div class="mb-3">
                 <label for="eventTitle" class="form-label">Event Title</label>
+                <span class="text-danger">*</span>
                 <input
                   type="text"
                   formControlName="title"
@@ -82,6 +83,7 @@
               </div>
               <div class="mb-3">
                 <label for="eventDate" class="form-label">Event Date</label>
+                 <span class="text-danger">*</span>
                 <input
                   type="date"
                   formControlName="date"
@@ -97,6 +99,7 @@
               </div>
               <div class="mb-3">
                 <label for="eventTime" class="form-label">Event Time</label>
+                 <span class="text-danger">*</span>
                 <input
                   type="time"
                   formControlName="eventTime"
@@ -112,6 +115,7 @@
               </div>
               <div class="mb-3">
                 <label for="location" class="form-label">Location</label>
+                 <span class="text-danger">*</span>
                 <input
                   type="text"
                   formControlName="location"
@@ -131,8 +135,9 @@
             <div class="col-md-6">
               <div class="mb-3 h-100 d-flex flex-column">
                 <label for="eventDescription" class="form-label"
-                  >Event Description</label
+                  >Event Desc <span class="text-danger">*</span></label
                 >
+                 
                 <textarea
                   class="form-control flex-grow-1"
                   formControlName="description"
@@ -151,8 +156,9 @@
             <div class="col-md-6">
               <div class="mb-3 h-100 d-flex flex-column">
                 <label for="eventShortDescription" class="form-label"
-                  >Event Short Description</label
+                  >Event Short Desc <span class="text-danger">*</span></label
                 >
+                 
                 <textarea
                   class="form-control flex-grow-1"
                   formControlName="shortDescription"

@@ -42,7 +42,7 @@
         <i class="fa fa-trash text-danger" (click)="deleteGallery(gallery)"></i>
       </td>
     </tr>
-  }
+    }
   </tbody>
 </table>
 
@@ -68,6 +68,7 @@
             <div class="col-md-12">
               <div class="mb-3">
                 <label for="eventTitle" class="form-label">Event Title</label>
+                <span class="text-danger">*</span>
                 <input
                   type="text"
                   formControlName="title"
@@ -75,15 +76,33 @@
                   id="eventTitle"
                   placeholder="Enter event title"
                 />
+                @if(selectedGalleries.get('title')?.invalid &&
+                selectedGalleries.get('title')?.touched){
+                <div>
+                  <span class="text-danger">Event Title is required</span>
+                </div>
+                }
               </div>
               <div class="mb-3">
                 <label for="eventDate" class="form-label">Event Date</label>
-                <input type="date" formControlName="date" class="form-control" id="eventDate" />
+                <span class="text-danger">*</span>
+                <input
+                  type="date"
+                  formControlName="date"
+                  class="form-control"
+                  id="eventDate"
+                />
+                @if(selectedGalleries.get('date')?.invalid &&
+                selectedGalleries.get('date')?.touched){
+                <div>
+                  <span class="text-danger">Date is required</span>
+                </div>
+                }
               </div>
               <div class="mb-3">
                 <label for="location" class="form-label"
                   >Image URLs (comma-separated)</label
-                >
+                ><span class="text-danger">*</span>
                 <input
                   type="text"
                   formControlName="imageUrl"
@@ -91,6 +110,12 @@
                   id="images"
                   placeholder="Enter image URLs"
                 />
+                @if(selectedGalleries.get('imageUrl')?.invalid &&
+                selectedGalleries.get('imageUrl')?.touched){
+                <div>
+                  <span class="text-danger">Image Url is required</span>
+                </div>
+                }
               </div>
             </div>
           </div>
