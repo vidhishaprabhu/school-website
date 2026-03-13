@@ -7,10 +7,11 @@ import {
   Validators,
 } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-contact-form',
-  imports: [ReactiveFormsModule, CommonModule],
+  imports: [ReactiveFormsModule, CommonModule, MatSnackBarModule],
   templateUrl: './contact-form.html',
   styleUrl: './contact-form.scss',
 })
@@ -19,6 +20,7 @@ export class ContactForm {
   constructor(
     private apiService: Api,
     private fb: FormBuilder,
+    private snackBar: MatSnackBar,
   ) {
     this.contactForm = this.fb.group({
       name: ['', Validators.required],
@@ -35,7 +37,9 @@ export class ContactForm {
     this.apiService.submitForm(this.contactForm.value).subscribe({
       next: (res: any) => {
         if (res) {
-          alert(res.message);
+          this.snackBar.open(res.message, 'Close', {
+            duration: 3000,
+          });
           this.contactForm.reset();
         }
       },
